@@ -6,7 +6,7 @@ const entity_model = require("./entity_model");
 
 router.get("/model", async function (req, res, next) {
   try {
-    return res.status(200).send(entity_model);
+    return res.status(200).send({ status: true, entity_model });
   } catch (err) {
     if (err.details) {
       return res
@@ -25,7 +25,7 @@ router.get("/model", async function (req, res, next) {
 router.get("/server-info/", async function (req, res, next) {
   try {
     let response = await serverInfo();
-    return res.status(200).send(response);
+    return res.status(200).send({ status: true, response });
   } catch (err) {
     if (err.details) {
       return res

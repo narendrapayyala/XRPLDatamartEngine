@@ -4,7 +4,7 @@ const xrpl = require("xrpl");
 
 router.get("/list", async function (req, res, next) {
   try {
-    return res.status(200).send(entities);
+    return res.status(200).send({ status: true, entities });
   } catch (err) {
     if (err.details) {
       return res
