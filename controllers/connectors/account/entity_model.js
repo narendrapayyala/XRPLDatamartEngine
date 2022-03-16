@@ -12,7 +12,7 @@ module.exports = [
   },
   {
     field: "account_data.Balance",
-    type: "account_data.String",
+    type: "String",
     description:
       "The account's current XRP balance in drops, represented as a string.",
   },
