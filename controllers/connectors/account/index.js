@@ -3,6 +3,7 @@ const router = express.Router();
 const moment = require("moment");
 const xrpl = require("xrpl");
 const { entity_model, req_parameters } = require("./entity_model");
+const ReportTemplates = require("../../../db/models").report_templates;
 
 router.get("/model", async function (req, res, next) {
   try {
@@ -25,6 +26,27 @@ router.get("/model", async function (req, res, next) {
 router.get("/account-info/params", async function (req, res, next) {
   try {
     return res.status(200).send({ status: true, req_parameters });
+  } catch (err) {
+    if (err.details) {
+      return res
+        .status(400)
+        .send({ status: false, message: err.details[0].message });
+    } else {
+      console.log(err);
+      return res.status(500).send({
+        status: false,
+        message: err.message ? err.message : "Internal Server Error.",
+      });
+    }
+  }
+});
+
+router.post("/account-info/template", async function (req, res, next) {
+  let body;
+  try {
+    body = { ...req.body };
+    await ReportTemplates.create(body);
+    return res.status(200).send({ status: true, message: "Success" });
   } catch (err) {
     if (err.details) {
       return res
