@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const moment = require("moment");
 const xrpl = require("xrpl");
+const { v4: uuidv4 } = require("uuid");
 const { entity_model, req_parameters } = require("./entity_model");
 const ReportTemplates = require("../../../db/models").report_templates;
 
@@ -44,7 +45,7 @@ router.get("/account-info/params", async function (req, res, next) {
 router.post("/account-info/template", async function (req, res, next) {
   let body;
   try {
-    body = { ...req.body };
+    body = { ...req.body, uuid: uuidv4() };
     await ReportTemplates.create(body);
     return res.status(200).send({ status: true, message: "Success" });
   } catch (err) {

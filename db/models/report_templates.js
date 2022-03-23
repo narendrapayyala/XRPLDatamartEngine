@@ -1,5 +1,4 @@
 "use strict";
-const { v4: uuidv4 } = require("uuid");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class report_templates extends Model {
@@ -17,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       uuid: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: uuidv4(),
       },
       report_name: {
         type: DataTypes.STRING,
