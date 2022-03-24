@@ -4,9 +4,9 @@ const moment = require("moment");
 const xrpl = require("xrpl");
 const CsvParser = require("json2csv").Parser;
 const { v4: uuidv4 } = require("uuid");
+const { filterFields } = require("../../helper");
 const { entity_model, req_parameters } = require("./entity_model");
 const ReportTemplates = require("../../../db/models").report_templates;
-const { filterFields } = require("../../helper");
 
 router.get("/model", async function (req, res, next) {
   try {
