@@ -84,6 +84,27 @@ router.post("/server-info/template", async function (req, res, next) {
   }
 });
 
+router.post("/server-info/template/update", async function (req, res, next) {
+  let body;
+  try {
+    body = { ...req.body };
+    await ReportTemplates.update(body, { where: { id: body.id } });
+    return res.status(200).send({ status: true, message: "Success" });
+  } catch (err) {
+    if (err.details) {
+      return res
+        .status(400)
+        .send({ status: false, message: err.details[0].message });
+    } else {
+      console.log(err);
+      return res.status(500).send({
+        status: false,
+        message: err.message ? err.message : "Internal Server Error.",
+      });
+    }
+  }
+});
+
 router.post("/server-info/fetch", async function (req, res, next) {
   let template,
     report_data = [{}];
