@@ -19,11 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(require("./controllers/middlewares").serverConfig);
 
 app.use("/", indexRouter);
 app.use("/entity", require("./controllers/entity"));
 app.use("/server", require("./controllers/connectors/server"));
 app.use("/account", require("./controllers/connectors/account"));
+app.use("/config", require("./controllers/config"));
 // app.use("/xrpl", require("./routes/xrpl"));
 
 // catch 404 and forward to error handler

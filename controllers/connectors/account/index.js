@@ -247,6 +247,7 @@ module.exports = router;
 
 async function accountInfo(params) {
   const client = new xrpl.Client(process.env.XRPL_WS_CLIENT_ADDRESS);
+  // const client = new xrpl.Client(req.server_config.url);
   await client.connect();
   const response = await client.request(params);
   client.disconnect();
