@@ -346,6 +346,117 @@ router.post("/account-info/csv", async function (req, res, next) {
   }
 });
 
+router.post("/account-info/csv", async function (req, res, next) {
+  let template,
+    requests = [],
+    formatted_data = [],
+    report_data = [],
+    methods = [];
+  try {
+    if (
+      req.body.id &&
+      req.body.uuid &&
+      req.body.params instanceof Object &&
+      req.body.params &&
+      req.body.params.accounts &&
+      req.body.params.accounts instanceof Array &&
+      req.body.params.accounts.length
+    ) {
+      template = await ReportTemplates.findOne({ where: { id: req.body.id } });
+      template.fields = JSON.parse(template.fields);
+      methods = template.fields
+        .map((obj) => obj.method)
+        .filter((value, i, arr) => arr.indexOf(value) === i);
+      req.body.params.accounts.map((account) => {
+        formatted_data.push({ account: account, data: {} });
+        methods.forEach((method) => {
+          switch (method) {
+            case "account_info":
+              requests.push(
+                getAccountInfo({
+                  account,
+                  ...req.body.params,
+                  command: "account_info",
+                })
+              );
+              break;
+            case "account_tx":
+              requests.push(
+                getAccountTx({
+                  account,
+                  ...req.body.params,
+                  command: "account_tx",
+                })
+              );
+              break;
+            default:
+              break;
+          }
+        });
+      });
+      let response = await Promise.all(requests);
+      template.fields = template.fields.sort((a, b) =>
+        a.order > b.order ? 1 : -1
+      );
+      response.forEach((resObj) => {
+        let row = {};
+        let accIndex = formatted_data.findIndex(
+          (obj) => obj.account === resObj.account
+        );
+        if (accIndex !== -1) {
+          formatted_data[accIndex].data[resObj.method] = resObj.response.result;
+        } else {
+        }
+      });
+      console.log("formatted_data", formatted_data);
+      let normalized_data = [];
+      formatted_data.forEach((account) => {
+        // console.log(Object.keys(account.data));
+        if (methods.includes("account_tx")) {
+          account.data.account_tx.transactions.forEach((transaction) => {
+            let row = { ...account.data };
+            row.account_tx.transactions = transaction;
+            normalized_data.push(row);
+          });
+        } else {
+          normalized_data.push({ ...account.data });
+        }
+      });
+      normalized_data.forEach((resObj) => {
+        let row = {};
+        template.fields.forEach((obj) => {
+          row[obj.field] = filterFields(resObj, [
+            obj.method,
+            ...obj.field_normalized.split("."),
+          ]);
+        });
+        report_data.push(row);
+      });
+      const csvParser = new CsvParser({ csvFields });
+      const csvData = csvParser.parse(report_data);
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename=${template.report_name}.csv`
+      );
+      return res.status(200).end(csvData);
+    }
+    throw { details: [{ message: "Error! Invalid input data." }] };
+  } catch (err) {
+    if (err.details) {
+      return res
+        .status(400)
+        .send({ status: false, message: err.details[0].message });
+    } else {
+      console.log(err);
+      return res.status(500).send({
+        status: false,
+        message: err.message ? err.message : "Internal Server Error.",
+      });
+    }
+  }
+});
+
 // router.get("/account-info/", async function (req, res, next) {
 //   try {
 //     let response = await serverInfo();
@@ -412,7 +523,6 @@ async function getAccountInfo(params) {
   client.disconnect();
   return { account: params.account, method: "account_info", response };
 }
-
 async function getAccountTx(params) {
   const client = new xrpl.Client(process.env.XRPL_WS_CLIENT_ADDRESS);
   // const client = new xrpl.Client(req.server_config.url);
