@@ -198,7 +198,6 @@ router.post("/account-info/fetch", async function (req, res, next) {
         } else {
         }
       });
-      console.log(response[3].response.result);
       let normalized_data = [];
       formatted_data.forEach((account) => {
         if (methods.includes("account_tx")) {
