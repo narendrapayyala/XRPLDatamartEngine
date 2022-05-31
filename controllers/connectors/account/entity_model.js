@@ -129,7 +129,7 @@ module.exports = {
     },
     {
       field: "ledger_current_index(Account Info)",
-      field_normalized: "aledger_current_index",
+      field_normalized: "ledger_current_index",
       type: "Integer",
       method: "account_info",
       description:
