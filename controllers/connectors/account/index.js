@@ -206,6 +206,10 @@ router.post("/account-info/fetch", async function (req, res, next) {
             row.account_tx.transactions = JSON.parse(
               JSON.stringify(transaction)
             );
+            if (typeof row.account_tx.transactions.tx.Amount == "object") {
+              row.account_tx.transactions.tx.Amount =
+                row.account_tx.transactions.tx.Amount.value;
+            }
             normalized_data.push(row);
           });
         } else {
@@ -374,6 +378,10 @@ router.post("/account-info/csv", async function (req, res, next) {
             row.account_tx.transactions = JSON.parse(
               JSON.stringify(transaction)
             );
+            if (typeof row.account_tx.transactions.tx.Amount == "object") {
+              row.account_tx.transactions.tx.Amount =
+                row.account_tx.transactions.tx.Amount.value;
+            }
             normalized_data.push(row);
           });
         } else {
