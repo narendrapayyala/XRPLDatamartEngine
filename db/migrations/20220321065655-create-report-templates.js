@@ -40,6 +40,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      is_db_sync: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      db_creds: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

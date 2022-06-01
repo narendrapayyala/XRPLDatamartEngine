@@ -46,6 +46,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      is_db_sync: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      db_creds: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        defaultValue: "",
+      },
     },
     {
       sequelize,
