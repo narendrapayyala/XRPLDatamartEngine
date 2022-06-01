@@ -81,6 +81,40 @@ router.post("/update", async function (req, res, next) {
   }
 });
 
+router.post("/db/connection", async function (req, res, next) {
+  try {
+    let { host, port, user, password } = req.body;
+    let mysql = require("mysql2/promise");
+    let connection = await mysql.createConnection({
+      host,
+      port,
+      user,
+      password,
+    });
+    const [rows, fields] = await connection.execute("SELECT 1 + 1 AS result");
+    if (rows[0].result === 2) {
+      return res
+        .status(200)
+        .send({ status: true, message: "Connection successful!" });
+    }
+    return res
+      .status(400)
+      .send({ status: false, message: "Authentication failed." });
+  } catch (err) {
+    if (err.details) {
+      return res
+        .status(400)
+        .send({ status: false, message: err.details[0].message });
+    } else {
+      console.log(err);
+      return res.status(500).send({
+        status: false,
+        message: err.message ? err.message : "Internal Server Error.",
+      });
+    }
+  }
+});
+
 module.exports = router;
 
 async function serverStatus(url, params) {
