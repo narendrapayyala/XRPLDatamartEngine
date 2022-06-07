@@ -153,7 +153,7 @@ module.exports = {
     },
     // account_tx fields
     {
-      field: "account(Account transactions)",
+      field: "Account(Account transactions)",
       field_normalized: "account",
       type: "string",
       method: "account_tx",
@@ -184,7 +184,7 @@ module.exports = {
         "If included and set to true, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change.",
     },
     {
-      field: "Account(Account transactions)",
+      field: "Account(Account transactions Tx)",
       field_normalized: "transactions.tx.Account",
       type: "String",
       method: "account_tx",
@@ -289,7 +289,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Validated(Account transactions)",
+      field: "Validated(Account transactions Tx)",
       field_normalized: "transactions.validated",
       type: "Boolean",
       method: "account_tx",

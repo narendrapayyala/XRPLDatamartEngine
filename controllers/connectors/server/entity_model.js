@@ -49,28 +49,28 @@ module.exports = {
         "The number of times (since starting up) that this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see Capacity Planning.",
     },
     {
-      field: "converge_time_s(last_close)",
+      field: "converge_time_s(Last_close)",
       field_normalized: "last_close.converge_time_s",
       type: "Number",
       description:
         "The amount of time it took to reach a consensus on the most recently validated ledger version, in seconds.",
     },
     {
-      field: "proposers(last_close)",
+      field: "proposers(Last_close)",
       field_normalized: "last_close.proposers",
       type: "Number",
       description:
         "How many trusted validators the server considered (including itself, if configured as a validator) in the consensus process for the most recently validated ledger version.",
     },
     {
-      field: "job_types(load)",
+      field: "job_types(Load)",
       field_normalized: "load.job_types",
       type: "Array",
       description:
         "(Admin only) Information about the rate of different types of jobs the server is doing and how much time it spends on each.",
     },
     {
-      field: "threads(load)",
+      field: "threads(Load)",
       field_normalized: "load.threads",
       type: "Number",
       description:
@@ -161,70 +161,70 @@ module.exports = {
         "The number of consecutive microseconds the server has been in the current state.",
     },
     {
-      field: "connected duration(state_accounting)",
+      field: "connected duration(State_accounting)",
       field_normalized: "state_accounting.connected.duration_us",
       type: "Number",
       description:
         "The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.)",
     },
     {
-      field: "connected transitions(state_accounting)",
+      field: "connected transitions(State_accounting)",
       field_normalized: "state_accounting.connected.transitions",
       type: "Number",
       description:
         "The number of times the server has changed into this state.",
     },
     {
-      field: "disconnected duration (state_accounting)",
+      field: "disconnected duration(State_accounting)",
       field_normalized: "state_accounting.disconnected.duration_us",
       type: "Number",
       description:
         "The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.)",
     },
     {
-      field: "disconnected transitions(state_accounting)",
+      field: "disconnected transitions(State_accounting)",
       field_normalized: "state_accounting.disconnected.transitions",
       type: "Number",
       description:
         "The number of times the server has changed into this state.",
     },
     {
-      field: "full duration(state_accounting)",
+      field: "full duration(State_accounting)",
       field_normalized: "state_accounting.full.duration_us",
       type: "Number",
       description:
         "The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.)",
     },
     {
-      field: "full transitions(state_accounting)",
+      field: "full transitions(State_accounting)",
       field_normalized: "state_accounting.full.transitions",
       type: "Number",
       description:
         "The number of times the server has changed into this state.",
     },
     {
-      field: "syncing duration(state_accounting)",
+      field: "syncing duration(State_accounting)",
       field_normalized: "state_accounting.syncing.duration_us",
       type: "Number",
       description:
         "The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.)",
     },
     {
-      field: "syncing transitions(state_accounting)",
+      field: "syncing transitions(State_accounting)",
       field_normalized: "state_accounting.syncing.transitions",
       type: "Number",
       description:
         "The number of times the server has changed into this state.",
     },
     {
-      field: "tracking duration(state_accounting)",
+      field: "tracking duration(State_accounting)",
       field_normalized: "state_accounting.tracking.duration_us",
       type: "Number",
       description:
         "The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.)",
     },
     {
-      field: "tracking transitions(state_accounting)",
+      field: "tracking transitions(State_accounting)",
       field_normalized: "state_accounting.tracking.transitions",
       type: "Number",
       description:
@@ -244,40 +244,40 @@ module.exports = {
         "Number of consecutive seconds that the server has been operational.",
     },
     {
-      field: "age(validated_ledger)",
+      field: "age(Validated_ledger)",
       field_normalized: "validated_ledger.age",
       type: "Number",
       description: "The time since the ledger was closed, in seconds.",
     },
     {
-      field: "base_fee_xrp(validated_ledger)",
+      field: "base_fee_xrp(Validated_ledger)",
       field_normalized: "validated_ledger.base_fee_xrp",
       type: "Number",
       description:
         "Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00001.",
     },
     {
-      field: "hash(validated_ledger)",
+      field: "hash(Validated_ledger)",
       field_normalized: "validated_ledger.hash",
       type: "String",
       description: "Unique hash for the ledger, as hexadecimal.",
     },
     {
-      field: "reserve_base_xrp(validated_ledger)",
+      field: "reserve_base_xrp(Validated_ledger)",
       field_normalized: "validated_ledger.reserve_base_xrp",
       type: "Number",
       description:
         "Minimum amount of XRP (not drops) necessary for every account to keep in reserve",
     },
     {
-      field: "reserve_inc_xrp(validated_ledger)",
+      field: "reserve_inc_xrp(Validated_ledger)",
       field_normalized: "validated_ledger.reserve_inc_xrp",
       type: "Number",
       description:
         "Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger.",
     },
     {
-      field: "seq(validated_ledger)",
+      field: "seq(Validated_ledger)",
       field_normalized: "validated_ledger.seq",
       type: "Number",
       description: "The ledger index of the latest validated ledger.",
