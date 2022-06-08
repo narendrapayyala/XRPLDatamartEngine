@@ -2,7 +2,7 @@ module.exports = {
   entity_model: [
     // account_info fields
     {
-      field: "LedgerEntryType",
+      field: "LedgerEntryType(Acc)",
       field_normalized: "account_data.LedgerEntryType",
       type: "String",
       method: "account_info",
@@ -11,7 +11,7 @@ module.exports = {
         "The value 0x0061, mapped to the string AccountRoot, indicates that this is an AccountRoot object.",
     },
     {
-      field: "Account",
+      field: "Account(Acc)",
       field_normalized: "account_data.Account",
       type: "String",
       method: "account_info",
@@ -19,7 +19,7 @@ module.exports = {
       description: "The identifying (classic) address of this account.",
     },
     {
-      field: "Balance",
+      field: "Balance(Acc)",
       field_normalized: "account_data.Balance",
       type: "String",
       method: "account_info",
@@ -28,7 +28,7 @@ module.exports = {
         "The account's current XRP balance in drops, represented as a string.",
     },
     {
-      field: "Flags",
+      field: "Flags(Acc)",
       field_normalized: "account_data.Flags",
       type: "Number",
       method: "account_info",
@@ -36,7 +36,7 @@ module.exports = {
       description: "A bit-map of boolean flags enabled for this account.",
     },
     {
-      field: "OwnerCount",
+      field: "OwnerCount(Acc)",
       field_normalized: "account_data.OwnerCount",
       type: "Number",
       method: "account_info",
@@ -45,7 +45,7 @@ module.exports = {
         "The number of objects this account owns in the ledger, which contributes to its owner reserve.",
     },
     {
-      field: "PreviousTxnID",
+      field: "PreviousTxnID(Acc)",
       field_normalized: "account_data.PreviousTxnID",
       type: "String	",
       method: "account_info",
@@ -54,7 +54,7 @@ module.exports = {
         "The identifying hash of the transaction that most recently modified this object.",
     },
     {
-      field: "PreviousTxnLgrSeq",
+      field: "PreviousTxnLgrSeq(Acc)",
       field_normalized: "account_data.PreviousTxnLgrSeq",
       type: "Number",
       method: "account_info",
@@ -63,7 +63,7 @@ module.exports = {
         "The index of the ledger that contains the transaction that most recently modified this object.",
     },
     {
-      field: "Sequence",
+      field: "Sequence(Acc)",
       field_normalized: "account_data.Sequence",
       type: "Number",
       method: "account_info",
@@ -72,7 +72,7 @@ module.exports = {
         "The sequence number of the next valid transaction for this account.",
     },
     {
-      field: "AccountTxnID",
+      field: "AccountTxnID(Acc)",
       field_normalized: "account_data.AccountTxnID",
       type: "String",
       method: "account_info",
@@ -81,7 +81,7 @@ module.exports = {
         "(Optional) The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the AccountTxnID transaction field. To enable it, send an AccountSet transaction with the asfAccountTxnID flag enabled.",
     },
     {
-      field: "Domain",
+      field: "Domain(Acc)",
       field_normalized: "account_data.Domain",
       type: "String",
       method: "account_info",
@@ -90,7 +90,7 @@ module.exports = {
         "(Optional) A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. Cannot be more than 256 bytes in length. ",
     },
     {
-      field: "EmailHash",
+      field: "EmailHash(Acc)",
       field_normalized: "account_data.EmailHash",
       type: "String",
       method: "account_info",
@@ -99,7 +99,7 @@ module.exports = {
         "(Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as Gravatar.",
     },
     {
-      field: "MessageKey",
+      field: "MessageKey(Acc)",
       field_normalized: "account_data.MessageKey",
       type: "String",
       method: "account_info",
@@ -108,7 +108,7 @@ module.exports = {
         "	(Optional) A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: 0x02 or 0x03 for secp256k1 keys, 0xED for Ed25519 keys.",
     },
     {
-      field: "RegularKey",
+      field: "RegularKey(Acc)",
       field_normalized: "account_data.RegularKey",
       type: "String",
       method: "account_info",
@@ -117,7 +117,7 @@ module.exports = {
         "(Optional) The address of a key pair that can be used to sign transactions for this account instead of the master key. Use a SetRegularKey transaction to change this value.",
     },
     {
-      field: "TicketCount",
+      field: "TicketCount(Acc)",
       field_normalized: "account_data.TicketCount",
       type: "Number",
       method: "account_info",
@@ -126,7 +126,7 @@ module.exports = {
         "(Optional) How many Tickets this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. (Added by the TicketBatch amendment.)",
     },
     {
-      field: "TickSize",
+      field: "TickSize(Acc)",
       field_normalized: "account_data.TickSize",
       type: "Number",
       method: "account_info",
@@ -135,7 +135,7 @@ module.exports = {
         "(Optional) How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are 3 to 15, inclusive. (Added by the TickSize amendment.)",
     },
     {
-      field: "TransferRate",
+      field: "TransferRate(Acc)",
       field_normalized: "account_data.TransferRate",
       type: "Number",
       method: "account_info",
@@ -144,7 +144,7 @@ module.exports = {
         "	(Optional) A transfer fee to charge other users for sending currency issued by this account to each other.",
     },
     {
-      field: "ledger_current_index",
+      field: "ledger_current_index(Acc)",
       field_normalized: "ledger_current_index",
       type: "Integer",
       method: "account_info",
@@ -153,7 +153,7 @@ module.exports = {
         "(Omitted if ledger_index is provided instead) The ledger index of the current in-progress ledger, which was used when retrieving this information.",
     },
     {
-      field: "ledger_index",
+      field: "ledger_index(Acc)",
       field_normalized: "ledger_index",
       type: "Integer",
       method: "account_info",
@@ -162,7 +162,7 @@ module.exports = {
         "(Omitted if ledger_current_index is provided instead) The ledger index of the ledger version used when retrieving this information. The information does not contain any changes from ledger versions newer than this one.",
     },
     {
-      field: "validated",
+      field: "validated(Acc)",
       field_normalized: "validated",
       type: "Boolean",
       method: "account_info",
@@ -172,7 +172,7 @@ module.exports = {
     },
     // account_tx fields
     {
-      field: "account",
+      field: "account(Tx)",
       field_normalized: "account",
       type: "string",
       method: "account_tx",
@@ -180,7 +180,7 @@ module.exports = {
       description: "Unique Address identifying the related account.",
     },
     {
-      field: "ledger_index_min",
+      field: "ledger_index_min(Tx)",
       field_normalized: "ledger_index_min",
       type: "Integer",
       method: "account_tx",
@@ -189,7 +189,7 @@ module.exports = {
         "The ledger index of the earliest ledger actually searched for transactions.",
     },
     {
-      field: "ledger_index_max",
+      field: "ledger_index_max(Tx)",
       field_normalized: "ledger_index_max",
       type: "Integer",
       method: "account_tx",
@@ -198,7 +198,7 @@ module.exports = {
         "The ledger index of the most recent ledger actually searched for transactions.",
     },
     {
-      field: "validated",
+      field: "validated(Tx)",
       field_normalized: "validated",
       type: "Boolean",
       method: "account_tx",
@@ -207,7 +207,7 @@ module.exports = {
         "If included and set to true, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change.",
     },
     {
-      field: "Account",
+      field: "Account(Tx)",
       field_normalized: "transactions.tx.Account",
       type: "String",
       method: "account_tx",
@@ -215,7 +215,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Amount",
+      field: "Amount(Tx)",
       field_normalized: "transactions.tx.Amount",
       type: "String",
       method: "account_tx",
@@ -223,7 +223,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Destination",
+      field: "Destination(Tx)",
       field_normalized: "transactions.tx.Destination",
       type: "String",
       method: "account_tx",
@@ -231,7 +231,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "DestinationTag",
+      field: "DestinationTag(Tx)",
       field_normalized: "transactions.tx.DestinationTag",
       type: "Number",
       method: "account_tx",
@@ -239,7 +239,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Fee",
+      field: "Fee(Tx)",
       field_normalized: "transactions.tx.Fee",
       type: "String",
       method: "account_tx",
@@ -247,7 +247,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Flags",
+      field: "Flags(Tx)",
       field_normalized: "transactions.tx.Flags",
       type: "Number",
       method: "account_tx",
@@ -255,7 +255,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "LastLedgerSequence",
+      field: "LastLedgerSequence(Tx)",
       field_normalized: "transactions.tx.LastLedgerSequence",
       type: "Number",
       method: "account_tx",
@@ -263,7 +263,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Sequence",
+      field: "Sequence(Tx)",
       field_normalized: "transactions.tx.Sequence",
       type: "Number",
       method: "account_tx",
@@ -271,7 +271,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "SigningPubKey",
+      field: "SigningPubKey(Tx)",
       field_normalized: "transactions.tx.SigningPubKey",
       type: "String",
       method: "account_tx",
@@ -279,7 +279,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "TransactionType",
+      field: "TransactionType(Tx)",
       field_normalized: "transactions.tx.TransactionType",
       type: "String",
       method: "account_tx",
@@ -287,7 +287,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "TxnSignature",
+      field: "TxnSignature(Tx)",
       field_normalized: "transactions.tx.TxnSignature",
       type: "String",
       method: "account_tx",
@@ -295,7 +295,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Date",
+      field: "Date(Tx)",
       field_normalized: "transactions.tx.date",
       type: "String",
       method: "account_tx",
@@ -303,7 +303,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Hash",
+      field: "Hash(Tx)",
       field_normalized: "transactions.tx.hash",
       type: "String",
       method: "account_tx",
@@ -311,7 +311,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "InLedger",
+      field: "InLedger(Tx)",
       field_normalized: "transactions.tx.inLedger",
       type: "Number",
       method: "account_tx",
@@ -319,7 +319,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Ledger_index",
+      field: "Ledger_index(Tx)",
       field_normalized: "transactions.tx.ledger_index",
       type: "Number",
       method: "account_tx",
@@ -327,7 +327,7 @@ module.exports = {
       description: "",
     },
     {
-      field: "Validated",
+      field: "Validated(Tx)",
       field_normalized: "transactions.validated",
       type: "Boolean",
       method: "account_tx",
