@@ -198,7 +198,7 @@ module.exports = {
         "The ledger index of the most recent ledger actually searched for transactions.",
     },
     {
-      field: "validated(Tx)",
+      field: "validated(TxRoot)",
       field_normalized: "validated",
       type: "Boolean",
       method: "account_tx",
