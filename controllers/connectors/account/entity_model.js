@@ -172,7 +172,7 @@ module.exports = {
     },
     // account_tx fields
     {
-      field: "account(Tx)",
+      field: "Account(TxRoot)",
       field_normalized: "account",
       type: "string",
       method: "account_tx",
