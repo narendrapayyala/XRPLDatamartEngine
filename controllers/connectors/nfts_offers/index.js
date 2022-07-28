@@ -403,12 +403,3 @@ async function getNftSellOffers(params) {
       return { type: "sell_offer", response: [] };
     });
 }
-
-async function getNfTokens(params) {
-  const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
-  // const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233");
-  await client.connect();
-  const response = await client.request(params);
-  client.disconnect();
-  return response;
-}
