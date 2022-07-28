@@ -63,7 +63,7 @@ module.exports = {
 
   req_parameters: [
     {
-      name: "nft_id",
+      name: "nfts",
       type: "string",
       required: true,
       method: "nfts_offers",
