@@ -158,11 +158,11 @@ router.post("/nft-info/fetch", async function (req, res, next) {
               ...JSON.parse(JSON.stringify(resObj.response.result)),
               offers: offerObj,
             };
-            temp.offers.amount = {
-              value: "13.1",
-              currency: "FOO",
-              issuer: "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            };
+            // temp.offers.amount = {
+            //   value: "13.1",
+            //   currency: "FOO",
+            //   issuer: "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            // };
             if (typeof temp.offers.amount == "object") {
               let amountObj = temp.offers.amount;
               temp.offers.amount = amountObj.value;
@@ -205,6 +205,7 @@ router.post("/nft-info/fetch", async function (req, res, next) {
 
 router.post("/nft-info/csv", async function (req, res, next) {
   let template,
+    requests = [],
     formatted_data = [],
     report_data = [],
     csvFields = [];
@@ -214,35 +215,60 @@ router.post("/nft-info/csv", async function (req, res, next) {
       req.body.uuid &&
       req.body.params instanceof Object &&
       req.body.params &&
-      req.body.params.accounts &&
-      req.body.params.accounts instanceof Array &&
-      req.body.params.accounts.length
+      req.body.params.nfts &&
+      req.body.params.nfts instanceof Array &&
+      req.body.params.nfts.length
     ) {
       template = await ReportTemplates.findOne({ where: { id: req.body.id } });
-      requests = await req.body.params.accounts.map((account) =>
-        getNfTokens({
-          account,
-          command: "account_nfts",
-          limit: 400,
-          ...req.body.params,
-        })
-      );
+      req.body.params.nfts.forEach((nft_id) => {
+        requests.push(
+          getNftBuyOffers({
+            nft_id,
+            limit: 500,
+            ...req.body.params,
+            command: "nft_buy_offers",
+          })
+        );
+        requests.push(
+          getNftSellOffers({
+            nft_id,
+            limit: 500,
+            ...req.body.params,
+            command: "nft_sell_offers",
+          })
+        );
+      });
       let response = await Promise.all(requests);
-      // template = {
-      //   fields:
-      //     '[{"field":"Account","field_normalized":"account","method":"account_nfts","type":"String","order":10},{"field":"Flags","field_normalized":"account_nfts.Flags","method":"account_nfts","type":"String","order":1},{"field":"NFTokenID","field_normalized":"account_nfts.NFTokenID","method":"account_nfts","type":"String","order":3},{"field":"ledger_current_index","field_normalized":"ledger_current_index","method":"account_nfts","type":"Number","order":3},{"field":"ledger_index","field_normalized":"ledger_index","method":"account_nfts","type":"Number","order":2}]',
-      // };
+      response = response.sort((a, b) => a.type.localeCompare(b.type));
+      template = {
+        fields:
+          '[{"field":"NFT Id","field_normalized":"nft_id","method":"nfts_offers","type":"String","order":10},{"field":"Offer type","field_normalized":"offer_type","method":"nfts_offers","type":"String","order":9},{"field":"Flags","field_normalized":"offers.flags","method":"nfts_offers","type":"String","order":1},{"field":"Amount","field_normalized":"offers.amount","method":"nfts_offers","type":"String","order":1},{"field":"Currency","field_normalized":"offers.currency","method":"nfts_offers","type":"String","order":5},{"field":"Issuer","field_normalized":"offers.issuer","method":"nfts_offers","type":"String","order":5},{"field":"nft_offer_index","field_normalized":"offers.nft_offer_index","method":"nfts_offers","type":"Number","order":3},{"field":"owner","field_normalized":"offers.owner","method":"nfts_offers","type":"Number","order":2}]',
+      };
       template.fields = JSON.parse(template.fields).sort((a, b) =>
         a.order > b.order ? 1 : -1
       );
       response.forEach((resObj) => {
-        resObj.result.account_nfts.forEach((tokenObj) => {
-          let temp = {
-            ...JSON.parse(JSON.stringify(resObj.result)),
-            account_nfts: tokenObj,
-          };
-          formatted_data.push(temp);
-        });
+        if (resObj.response.result) {
+          resObj.response.result.offers.forEach((offerObj) => {
+            let temp = {
+              offer_type: resObj.type,
+              ...JSON.parse(JSON.stringify(resObj.response.result)),
+              offers: offerObj,
+            };
+            // temp.offers.amount = {
+            //   value: "13.1",
+            //   currency: "FOO",
+            //   issuer: "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            // };
+            if (typeof temp.offers.amount == "object") {
+              let amountObj = temp.offers.amount;
+              temp.offers.amount = amountObj.value;
+              temp.offers.currency = amountObj.currency;
+              temp.offers.issuer = amountObj.issuer;
+            }
+            formatted_data.push(temp);
+          });
+        }
       });
       formatted_data.forEach((resObj, index) => {
         let row = {};
