@@ -240,10 +240,10 @@ router.post("/nft-info/csv", async function (req, res, next) {
       });
       let response = await Promise.all(requests);
       response = response.sort((a, b) => a.type.localeCompare(b.type));
-      template = {
-        fields:
-          '[{"field":"NFT Id","field_normalized":"nft_id","method":"nfts_offers","type":"String","order":10},{"field":"Offer type","field_normalized":"offer_type","method":"nfts_offers","type":"String","order":9},{"field":"Flags","field_normalized":"offers.flags","method":"nfts_offers","type":"String","order":1},{"field":"Amount","field_normalized":"offers.amount","method":"nfts_offers","type":"String","order":1},{"field":"Currency","field_normalized":"offers.currency","method":"nfts_offers","type":"String","order":5},{"field":"Issuer","field_normalized":"offers.issuer","method":"nfts_offers","type":"String","order":5},{"field":"nft_offer_index","field_normalized":"offers.nft_offer_index","method":"nfts_offers","type":"Number","order":3},{"field":"owner","field_normalized":"offers.owner","method":"nfts_offers","type":"Number","order":2}]',
-      };
+      // template = {
+      //   fields:
+      //     '[{"field":"NFT Id","field_normalized":"nft_id","method":"nfts_offers","type":"String","order":10},{"field":"Offer type","field_normalized":"offer_type","method":"nfts_offers","type":"String","order":9},{"field":"Flags","field_normalized":"offers.flags","method":"nfts_offers","type":"String","order":1},{"field":"Amount","field_normalized":"offers.amount","method":"nfts_offers","type":"String","order":1},{"field":"Currency","field_normalized":"offers.currency","method":"nfts_offers","type":"String","order":5},{"field":"Issuer","field_normalized":"offers.issuer","method":"nfts_offers","type":"String","order":5},{"field":"nft_offer_index","field_normalized":"offers.nft_offer_index","method":"nfts_offers","type":"Number","order":3},{"field":"owner","field_normalized":"offers.owner","method":"nfts_offers","type":"Number","order":2}]',
+      // };
       template.fields = JSON.parse(template.fields).sort((a, b) =>
         a.order > b.order ? 1 : -1
       );
