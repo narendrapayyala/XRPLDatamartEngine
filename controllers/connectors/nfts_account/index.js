@@ -122,7 +122,7 @@ router.post("/nft-info/fetch", async function (req, res, next) {
       req.body.params.accounts.length
     ) {
       template = await ReportTemplates.findOne({ where: { id: req.body.id } });
-      requests = await req.body.params.accounts.map((account) =>
+      let requests = await req.body.params.accounts.map((account) =>
         getNfTokens({
           account,
           command: "account_nfts",
@@ -193,7 +193,7 @@ router.post("/nft-info/csv", async function (req, res, next) {
       req.body.params.accounts.length
     ) {
       template = await ReportTemplates.findOne({ where: { id: req.body.id } });
-      requests = await req.body.params.accounts.map((account) =>
+      let requests = await req.body.params.accounts.map((account) =>
         getNfTokens({
           account,
           command: "account_nfts",
