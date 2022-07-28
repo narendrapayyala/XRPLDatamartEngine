@@ -206,6 +206,7 @@ router.post("/nft-info/csv", async function (req, res, next) {
       //   fields:
       //     '[{"field":"Account","field_normalized":"account","method":"account_nfts","type":"String","order":10},{"field":"Flags","field_normalized":"account_nfts.Flags","method":"account_nfts","type":"String","order":1},{"field":"NFTokenID","field_normalized":"account_nfts.NFTokenID","method":"account_nfts","type":"String","order":3},{"field":"ledger_current_index","field_normalized":"ledger_current_index","method":"account_nfts","type":"Number","order":3},{"field":"ledger_index","field_normalized":"ledger_index","method":"account_nfts","type":"Number","order":2}]',
       // };
+
       template.fields = JSON.parse(template.fields).sort((a, b) =>
         a.order > b.order ? 1 : -1
       );
