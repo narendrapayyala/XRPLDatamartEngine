@@ -58,7 +58,7 @@ let entities = [
   {
     name: "NFTs Account",
     connector: "nftaccount",
-    method: "nft_account",
+    method: "account_nfts",
     route: "nft-info",
   },
   {
