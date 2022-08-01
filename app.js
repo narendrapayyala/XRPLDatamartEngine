@@ -25,6 +25,8 @@ app.use("/", indexRouter);
 app.use("/entity", require("./controllers/entity"));
 app.use("/server", require("./controllers/connectors/server"));
 app.use("/account", require("./controllers/connectors/account"));
+app.use("/nftaccount", require("./controllers/connectors/nfts_account"));
+app.use("/nftoffers", require("./controllers/connectors/nfts_offers"));
 app.use("/config", require("./controllers/config"));
 // app.use("/xrpl", require("./routes/xrpl"));
 
