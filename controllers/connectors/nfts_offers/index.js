@@ -557,7 +557,6 @@ router.post("/nft-info/sell-offers", async function (req, res, next) {
 
 router.post("/nft-info/offers", async function (req, res, next) {
   let requests = [];
-
   try {
     if (
       req.body.params instanceof Object &&
