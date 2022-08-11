@@ -16,8 +16,16 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      phone: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       token: {
         type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      user_type: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {

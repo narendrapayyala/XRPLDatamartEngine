@@ -22,9 +22,19 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "",
+      },
       token: {
         type: DataTypes.TEXT,
         allowNull: false,
+      },
+      user_type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "user",
       },
     },
     {
