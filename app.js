@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers/middlewares").serverConfig);
 
 app.use("/", indexRouter);
+app.use("/user", require("./routes/users"));
 app.use("/entity", require("./controllers/entity"));
 app.use("/server", require("./controllers/connectors/server"));
 app.use("/account", require("./controllers/connectors/account"));
