@@ -30,6 +30,12 @@ router.post("/token", async function (req, res, next) {
       where: { email: req.body.email },
       defaults: req.body,
     });
+    if (!isCreated) {
+      await Users.update(req.body, {
+        where: { email: req.body.email },
+        fields: ["name", "token"],
+      });
+    }
     return res.status(200).send({ status: true, user });
   } catch (err) {
     if (err.details) {
