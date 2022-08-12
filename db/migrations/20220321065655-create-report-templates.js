@@ -12,6 +12,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      created_by: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      access_type: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       report_name: {
         type: Sequelize.STRING,
         allowNull: false,

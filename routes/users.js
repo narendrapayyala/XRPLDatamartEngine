@@ -25,6 +25,7 @@ router.get("/list", async function (req, res, next) {
 
 router.post("/token", async function (req, res, next) {
   try {
+    console.log(req.body);
     let [user, isCreated] = await Users.findOrCreate({
       where: { email: req.body.email },
       defaults: req.body,

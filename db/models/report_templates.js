@@ -17,6 +17,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      created_by: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      access_type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "private", // public or private
+      },
       report_name: {
         type: DataTypes.STRING,
         allowNull: false,
