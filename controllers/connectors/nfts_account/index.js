@@ -6,6 +6,8 @@ const CsvParser = require("json2csv").Parser;
 const { v4: uuidv4 } = require("uuid");
 const mysql = require("mysql2/promise");
 const { filterFields } = require("../../helper");
+const VerifyToken = require("../../middlewares").verifyToken;
+router.use(VerifyToken);
 const { entity_model, req_parameters } = require("./entity_model");
 const ReportTemplates = require("../../../db/models").report_templates;
 
