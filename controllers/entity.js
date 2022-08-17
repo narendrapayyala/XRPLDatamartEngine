@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const xrpl = require("xrpl");
 const ReportTemplates = require("../db/models").report_templates;
-const VerifyToken = require("./middlewares").verifyToken;
+const authUser = require("./middlewares").authUser;
+router.use(authUser);
 
-router.get("/list", VerifyToken, async function (req, res, next) {
+router.get("/list", async function (req, res, next) {
   try {
     return res.status(200).send({ status: true, entities });
   } catch (err) {
@@ -22,9 +23,13 @@ router.get("/list", VerifyToken, async function (req, res, next) {
   }
 });
 router.get("/report-templates/list", async function (req, res, next) {
-  let templates;
+  let templates,
+    query = { access_type: "public" };
   try {
-    templates = await ReportTemplates.findAll();
+    if (!req.auth_user) {
+      query.where.created_by = req.auth_user.id;
+    }
+    templates = await ReportTemplates.findAll(query);
     return res.status(200).send({ status: true, templates });
   } catch (err) {
     if (err.details) {

@@ -22,7 +22,6 @@ const verifyToken = async (req, res, next) => {
       attributes: { exclude: ["token"] },
     });
     req.auth_user = user;
-    console.log(req.auth_user);
     if (!user) {
       res.status(401);
       throw { message: "Error! Session expired" };
@@ -36,7 +35,28 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
+const authUser = async (req, res, next) => {
+  try {
+    let token = req.headers["token"];
+    if (token) {
+      let user = await Users.findOne({
+        where: { token: token },
+        raw: true,
+        attributes: { exclude: ["token"] },
+      });
+      req.auth_user = user;
+    }
+    next();
+  } catch (err) {
+    return res.send({
+      status: false,
+      message: err.message ? err.message : "Internal Server Error.",
+    });
+  }
+};
+
 module.exports = {
   serverConfig,
   verifyToken,
+  authUser,
 };
