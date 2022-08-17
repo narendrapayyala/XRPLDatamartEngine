@@ -22,11 +22,12 @@ router.get("/list", async function (req, res, next) {
     }
   }
 });
+
 router.get("/report-templates/list", async function (req, res, next) {
   let templates,
     query = { access_type: "public" };
   try {
-    if (!req.auth_user) {
+    if (req.auth_user) {
       query.where.created_by = req.auth_user.id;
     }
     templates = await ReportTemplates.findAll(query);
