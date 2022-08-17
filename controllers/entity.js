@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const xrpl = require("xrpl");
+const { sequelize, Sequelize } = require("../db/models");
 const ReportTemplates = require("../db/models").report_templates;
 const authUser = require("./middlewares").authUser;
 router.use(authUser);
@@ -25,10 +26,19 @@ router.get("/list", async function (req, res, next) {
 
 router.get("/report-templates/list", async function (req, res, next) {
   let templates,
-    query = { access_type: "public" };
+    query = {};
   try {
     if (req.auth_user) {
-      query.where.created_by = req.auth_user.id;
+      query = {
+        where: {
+          [Sequelize.Op.or]: [
+            { access_type: "public" },
+            { created_by: req.auth_user.id },
+          ],
+        },
+      };
+    } else {
+      query = { where: { access_type: "public" } };
     }
     templates = await ReportTemplates.findAll(query);
     return res.status(200).send({ status: true, templates });
