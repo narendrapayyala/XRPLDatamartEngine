@@ -25,7 +25,6 @@ router.get("/list", async function (req, res, next) {
 
 router.post("/token", async function (req, res, next) {
   try {
-    console.log(req.body);
     let [user, isCreated] = await Users.findOrCreate({
       where: { email: req.body.email },
       defaults: req.body,
@@ -37,6 +36,31 @@ router.post("/token", async function (req, res, next) {
       });
     }
     return res.status(200).send({ status: true, user });
+  } catch (err) {
+    if (err.details) {
+      return res
+        .status(400)
+        .send({ status: false, message: err.details[0].message });
+    } else {
+      console.log(err);
+      return res.status(500).send({
+        status: false,
+        message: err.message ? err.message : "Internal Server Error.",
+      });
+    }
+  }
+});
+
+router.post("/logout", async function (req, res, next) {
+  try {
+    await Users.update(
+      { token: "" },
+      {
+        where: { email: req.body.email },
+        fields: ["token"],
+      }
+    );
+    return res.status(200).send({ status: true, user: null });
   } catch (err) {
     if (err.details) {
       return res
