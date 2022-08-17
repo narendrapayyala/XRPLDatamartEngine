@@ -21,29 +21,25 @@ router.get("/list", VerifyToken, async function (req, res, next) {
     }
   }
 });
-router.get(
-  "/report-templates/list",
-  VerifyToken,
-  async function (req, res, next) {
-    let templates;
-    try {
-      templates = await ReportTemplates.findAll();
-      return res.status(200).send({ status: true, templates });
-    } catch (err) {
-      if (err.details) {
-        return res
-          .status(400)
-          .send({ status: false, message: err.details[0].message });
-      } else {
-        console.log(err);
-        return res.status(500).send({
-          status: false,
-          message: err.message ? err.message : "Internal Server Error.",
-        });
-      }
+router.get("/report-templates/list", async function (req, res, next) {
+  let templates;
+  try {
+    templates = await ReportTemplates.findAll();
+    return res.status(200).send({ status: true, templates });
+  } catch (err) {
+    if (err.details) {
+      return res
+        .status(400)
+        .send({ status: false, message: err.details[0].message });
+    } else {
+      console.log(err);
+      return res.status(500).send({
+        status: false,
+        message: err.message ? err.message : "Internal Server Error.",
+      });
     }
   }
-);
+});
 
 module.exports = router;
 
