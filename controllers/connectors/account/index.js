@@ -72,7 +72,9 @@ router.post("/account-info/template/update", async function (req, res, next) {
   let body;
   try {
     body = { ...req.body };
-    await ReportTemplates.update(body, { where: { id: body.id } });
+    await ReportTemplates.update(body, {
+      where: { id: body.id, created_by: req.auth_user.id },
+    });
     return res.status(200).send({ status: true, message: "Success" });
   } catch (err) {
     if (err.details) {
