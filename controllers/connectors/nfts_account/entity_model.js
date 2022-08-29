@@ -3,6 +3,7 @@ module.exports = {
     // account_nfts fields
     {
       field: "Account",
+      display_name: "Account",
       field_normalized: "account",
       type: "String",
       method: "account_nfts",
@@ -10,6 +11,7 @@ module.exports = {
     },
     {
       field: "Flags",
+      display_name: "Flags",
       field_normalized: "account_nfts.Flags",
       type: "Number",
       method: "account_nfts",
@@ -17,6 +19,7 @@ module.exports = {
     },
     {
       field: "Issuer",
+      display_name: "Issuer",
       field_normalized: "account_nfts.Issuer",
       type: "String",
       method: "account_nfts",
@@ -24,6 +27,7 @@ module.exports = {
     },
     {
       field: "NFTokenID",
+      display_name: "NFTokenID",
       field_normalized: "account_nfts.NFTokenID",
       type: "String",
       method: "account_nfts",
@@ -31,6 +35,7 @@ module.exports = {
     },
     {
       field: "NFTokenTaxon",
+      display_name: "NFTokenTaxon",
       field_normalized: "account_nfts.NFTokenTaxon",
       type: "Number",
       method: "account_nfts",
@@ -39,6 +44,7 @@ module.exports = {
     },
     {
       field: "URI",
+      display_name: "URI",
       field_normalized: "account_nfts.URI",
       type: "String",
       method: "account_nfts",
@@ -46,6 +52,7 @@ module.exports = {
     },
     {
       field: "nft_serial",
+      display_name: "nft_serial",
       field_normalized: "account_nfts.nft_serial",
       type: "Number",
       method: "account_nfts",
@@ -54,6 +61,7 @@ module.exports = {
     },
     {
       field: "ledger_hash",
+      display_name: "ledger_hash",
       field_normalized: "ledger_hash",
       type: "String",
       method: "account_nfts",
@@ -62,6 +70,7 @@ module.exports = {
     },
     {
       field: "ledger_current_index",
+      display_name: "ledger_current_index",
       field_normalized: "ledger_current_index",
       type: "Integer",
       method: "account_nfts",
@@ -70,6 +79,7 @@ module.exports = {
     },
     {
       field: "ledger_index",
+      display_name: "ledger_index",
       field_normalized: "ledger_index",
       type: "Integer",
       method: "account_nfts",
@@ -78,6 +88,7 @@ module.exports = {
     },
     {
       field: "validated",
+      display_name: "validated",
       field_normalized: "validated",
       type: "Boolean",
       method: "account_nfts",

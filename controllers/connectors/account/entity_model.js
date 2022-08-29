@@ -3,6 +3,7 @@ module.exports = {
     // account_info fields
     {
       field: "LedgerEntryType(Acc)",
+      display_name: "LedgerEntryType(Acc)",
       field_normalized: "account_data.LedgerEntryType",
       type: "String",
       method: "account_info",
@@ -12,6 +13,7 @@ module.exports = {
     },
     {
       field: "Account(Acc)",
+      display_name: "Account(Acc)",
       field_normalized: "account_data.Account",
       type: "String",
       method: "account_info",
@@ -20,6 +22,7 @@ module.exports = {
     },
     {
       field: "Balance(Acc)",
+      display_name: "Balance(Acc)",
       field_normalized: "account_data.Balance",
       type: "String",
       method: "account_info",
@@ -29,6 +32,7 @@ module.exports = {
     },
     {
       field: "Flags(Acc)",
+      display_name: "Flags(Acc)",
       field_normalized: "account_data.Flags",
       type: "Number",
       method: "account_info",
@@ -37,6 +41,7 @@ module.exports = {
     },
     {
       field: "OwnerCount(Acc)",
+      display_name: "OwnerCount(Acc)",
       field_normalized: "account_data.OwnerCount",
       type: "Number",
       method: "account_info",
@@ -46,6 +51,7 @@ module.exports = {
     },
     {
       field: "PreviousTxnID(Acc)",
+      display_name: "PreviousTxnID(Acc)",
       field_normalized: "account_data.PreviousTxnID",
       type: "String	",
       method: "account_info",
@@ -55,6 +61,7 @@ module.exports = {
     },
     {
       field: "PreviousTxnLgrSeq(Acc)",
+      display_name: "PreviousTxnLgrSeq(Acc)",
       field_normalized: "account_data.PreviousTxnLgrSeq",
       type: "Number",
       method: "account_info",
@@ -64,6 +71,7 @@ module.exports = {
     },
     {
       field: "Sequence(Acc)",
+      display_name: "Sequence(Acc)",
       field_normalized: "account_data.Sequence",
       type: "Number",
       method: "account_info",
@@ -73,6 +81,7 @@ module.exports = {
     },
     {
       field: "AccountTxnID(Acc)",
+      display_name: "AccountTxnID(Acc)",
       field_normalized: "account_data.AccountTxnID",
       type: "String",
       method: "account_info",
@@ -82,6 +91,7 @@ module.exports = {
     },
     {
       field: "Domain(Acc)",
+      display_name: "Domain(Acc)",
       field_normalized: "account_data.Domain",
       type: "String",
       method: "account_info",
@@ -91,6 +101,7 @@ module.exports = {
     },
     {
       field: "EmailHash(Acc)",
+      display_name: "EmailHash(Acc)",
       field_normalized: "account_data.EmailHash",
       type: "String",
       method: "account_info",
@@ -100,6 +111,7 @@ module.exports = {
     },
     {
       field: "MessageKey(Acc)",
+      display_name: "MessageKey(Acc)",
       field_normalized: "account_data.MessageKey",
       type: "String",
       method: "account_info",
@@ -109,6 +121,7 @@ module.exports = {
     },
     {
       field: "RegularKey(Acc)",
+      display_name: "RegularKey(Acc)",
       field_normalized: "account_data.RegularKey",
       type: "String",
       method: "account_info",
@@ -118,6 +131,7 @@ module.exports = {
     },
     {
       field: "TicketCount(Acc)",
+      display_name: "TicketCount(Acc)",
       field_normalized: "account_data.TicketCount",
       type: "Number",
       method: "account_info",
@@ -127,6 +141,7 @@ module.exports = {
     },
     {
       field: "TickSize(Acc)",
+      display_name: "TickSize(Acc)",
       field_normalized: "account_data.TickSize",
       type: "Number",
       method: "account_info",
@@ -136,6 +151,7 @@ module.exports = {
     },
     {
       field: "TransferRate(Acc)",
+      display_name: "TransferRate(Acc)",
       field_normalized: "account_data.TransferRate",
       type: "Number",
       method: "account_info",
@@ -145,6 +161,7 @@ module.exports = {
     },
     {
       field: "ledger_current_index(Acc)",
+      display_name: "ledger_current_index(Acc)",
       field_normalized: "ledger_current_index",
       type: "Integer",
       method: "account_info",
@@ -154,6 +171,7 @@ module.exports = {
     },
     {
       field: "ledger_index(Acc)",
+      display_name: "ledger_index(Acc)",
       field_normalized: "ledger_index",
       type: "Integer",
       method: "account_info",
@@ -163,6 +181,7 @@ module.exports = {
     },
     {
       field: "validated(Acc)",
+      display_name: "validated(Acc)",
       field_normalized: "validated",
       type: "Boolean",
       method: "account_info",
@@ -173,6 +192,7 @@ module.exports = {
     // account_tx fields
     {
       field: "Account(TxRoot)",
+      display_name: "Account(TxRoot)",
       field_normalized: "account",
       type: "string",
       method: "account_tx",
@@ -181,6 +201,7 @@ module.exports = {
     },
     {
       field: "ledger_index_min(Tx)",
+      display_name: "ledger_index_min(Tx)",
       field_normalized: "ledger_index_min",
       type: "Integer",
       method: "account_tx",
@@ -190,6 +211,7 @@ module.exports = {
     },
     {
       field: "ledger_index_max(Tx)",
+      display_name: "ledger_index_max(Tx)",
       field_normalized: "ledger_index_max",
       type: "Integer",
       method: "account_tx",
@@ -199,6 +221,7 @@ module.exports = {
     },
     {
       field: "validated(TxRoot)",
+      display_name: "validated(TxRoot)",
       field_normalized: "validated",
       type: "Boolean",
       method: "account_tx",
@@ -208,6 +231,7 @@ module.exports = {
     },
     {
       field: "Account(Tx)",
+      display_name: "Account(Tx)",
       field_normalized: "transactions.tx.Account",
       type: "String",
       method: "account_tx",
@@ -216,6 +240,7 @@ module.exports = {
     },
     {
       field: "Amount(Tx)",
+      display_name: "Amount(Tx)",
       field_normalized: "transactions.tx.Amount",
       type: "String",
       method: "account_tx",
@@ -224,6 +249,7 @@ module.exports = {
     },
     {
       field: "Destination(Tx)",
+      display_name: "Destination(Tx)",
       field_normalized: "transactions.tx.Destination",
       type: "String",
       method: "account_tx",
@@ -232,6 +258,7 @@ module.exports = {
     },
     {
       field: "DestinationTag(Tx)",
+      display_name: "DestinationTag(Tx)",
       field_normalized: "transactions.tx.DestinationTag",
       type: "Number",
       method: "account_tx",
@@ -240,6 +267,7 @@ module.exports = {
     },
     {
       field: "Fee(Tx)",
+      display_name: "Fee(Tx)",
       field_normalized: "transactions.tx.Fee",
       type: "String",
       method: "account_tx",
@@ -248,6 +276,7 @@ module.exports = {
     },
     {
       field: "Flags(Tx)",
+      display_name: "Flags(Tx)",
       field_normalized: "transactions.tx.Flags",
       type: "Number",
       method: "account_tx",
@@ -256,6 +285,7 @@ module.exports = {
     },
     {
       field: "LastLedgerSequence(Tx)",
+      display_name: "LastLedgerSequence(Tx)",
       field_normalized: "transactions.tx.LastLedgerSequence",
       type: "Number",
       method: "account_tx",
@@ -264,6 +294,7 @@ module.exports = {
     },
     {
       field: "Sequence(Tx)",
+      display_name: "Sequence(Tx)",
       field_normalized: "transactions.tx.Sequence",
       type: "Number",
       method: "account_tx",
@@ -272,6 +303,7 @@ module.exports = {
     },
     {
       field: "SigningPubKey(Tx)",
+      display_name: "SigningPubKey(Tx)",
       field_normalized: "transactions.tx.SigningPubKey",
       type: "String",
       method: "account_tx",
@@ -280,6 +312,7 @@ module.exports = {
     },
     {
       field: "TransactionType(Tx)",
+      display_name: "TransactionType(Tx)",
       field_normalized: "transactions.tx.TransactionType",
       type: "String",
       method: "account_tx",
@@ -288,6 +321,7 @@ module.exports = {
     },
     {
       field: "TxnSignature(Tx)",
+      display_name: "TxnSignature(Tx)",
       field_normalized: "transactions.tx.TxnSignature",
       type: "String",
       method: "account_tx",
@@ -296,6 +330,7 @@ module.exports = {
     },
     {
       field: "Date(Tx)",
+      display_name: "Date(Tx)",
       field_normalized: "transactions.tx.date",
       type: "String",
       method: "account_tx",
@@ -304,6 +339,7 @@ module.exports = {
     },
     {
       field: "Hash(Tx)",
+      display_name: "Hash(Tx)",
       field_normalized: "transactions.tx.hash",
       type: "String",
       method: "account_tx",
@@ -312,6 +348,7 @@ module.exports = {
     },
     {
       field: "InLedger(Tx)",
+      display_name: "InLedger(Tx)",
       field_normalized: "transactions.tx.inLedger",
       type: "Number",
       method: "account_tx",
@@ -320,6 +357,7 @@ module.exports = {
     },
     {
       field: "Ledger_index(Tx)",
+      display_name: "Ledger_index(Tx)",
       field_normalized: "transactions.tx.ledger_index",
       type: "Number",
       method: "account_tx",
@@ -328,6 +366,7 @@ module.exports = {
     },
     {
       field: "Validated(Tx)",
+      display_name: "Validated(Tx)",
       field_normalized: "transactions.validated",
       type: "Boolean",
       method: "account_tx",

@@ -2,6 +2,7 @@ module.exports = {
   entity_model: [
     {
       field: "amendment_blocked",
+      display_name: "amendment_blocked",
       field_normalized: "amendment_blocked",
       type: "Boolean",
       description:
@@ -9,12 +10,14 @@ module.exports = {
     },
     {
       field: "build_version",
+      display_name: "build_version",
       field_normalized: "build_version",
       type: "String",
       description: "The version number of the running rippled version.",
     },
     {
       field: "closed_ledger",
+      display_name: "closed_ledger",
       field_normalized: "closed_ledger",
       type: "Object",
       description:
@@ -22,6 +25,7 @@ module.exports = {
     },
     {
       field: "complete_ledgers",
+      display_name: "complete_ledgers",
       field_normalized: "complete_ledgers",
       type: "String",
       description:
@@ -29,6 +33,7 @@ module.exports = {
     },
     {
       field: "hostid",
+      display_name: "hostid",
       field_normalized: "hostid",
       type: "String",
       description:
@@ -36,6 +41,7 @@ module.exports = {
     },
     {
       field: "io_latency_ms",
+      display_name: "io_latency_ms",
       field_normalized: "io_latency_ms",
       type: "Number",
       description:
@@ -43,6 +49,7 @@ module.exports = {
     },
     {
       field: "jq_trans_overflow",
+      display_name: "jq_trans_overflow",
       field_normalized: "jq_trans_overflow",
       type: "String - Number",
       description:
@@ -50,6 +57,7 @@ module.exports = {
     },
     {
       field: "converge_time_s(Last_close)",
+      display_name: "converge_time_s(Last_close)",
       field_normalized: "last_close.converge_time_s",
       type: "Number",
       description:
@@ -57,6 +65,7 @@ module.exports = {
     },
     {
       field: "proposers(Last_close)",
+      display_name: "proposers(Last_close)",
       field_normalized: "last_close.proposers",
       type: "Number",
       description:
@@ -64,6 +73,7 @@ module.exports = {
     },
     {
       field: "job_types(Load)",
+      display_name: "job_types(Load)",
       field_normalized: "load.job_types",
       type: "Array",
       description:
@@ -71,6 +81,7 @@ module.exports = {
     },
     {
       field: "threads(Load)",
+      display_name: "threads(Load)",
       field_normalized: "load.threads",
       type: "Number",
       description:
@@ -78,6 +89,7 @@ module.exports = {
     },
     {
       field: "load_factor",
+      display_name: "load_factor",
       field_normalized: "load_factor",
       type: "Number",
       description:
@@ -85,6 +97,7 @@ module.exports = {
     },
     {
       field: "load_factor_local",
+      display_name: "load_factor_local",
       field_normalized: "load_factor_local",
       type: "Number",
       description:
@@ -92,6 +105,7 @@ module.exports = {
     },
     {
       field: "load_factor_net",
+      display_name: "load_factor_net",
       field_normalized: "load_factor_net",
       type: "Number",
       description:
@@ -99,6 +113,7 @@ module.exports = {
     },
     {
       field: "load_factor_cluster",
+      display_name: "load_factor_cluster",
       field_normalized: "load_factor_cluster",
       type: "Number",
       description:
@@ -106,6 +121,7 @@ module.exports = {
     },
     {
       field: "load_factor_fee_escalation",
+      display_name: "load_factor_fee_escalation",
       field_normalized: "load_factor_fee_escalation",
       type: "Number",
       description:
@@ -113,6 +129,7 @@ module.exports = {
     },
     {
       field: "load_factor_fee_queue",
+      display_name: "load_factor_fee_queue",
       field_normalized: "load_factor_fee_queue",
       type: "Number",
       description:
@@ -120,6 +137,7 @@ module.exports = {
     },
     {
       field: "load_factor_server",
+      display_name: "load_factor_server",
       field_normalized: "load_factor_server",
       type: "Number",
       description:
@@ -127,6 +145,7 @@ module.exports = {
     },
     {
       field: "peers",
+      display_name: "peers",
       field_normalized: "peers",
       type: "Number",
       description:
@@ -134,6 +153,7 @@ module.exports = {
     },
     {
       field: "pubkey_node",
+      display_name: "pubkey_node",
       field_normalized: "pubkey_node",
       type: "String",
       description:
@@ -141,6 +161,7 @@ module.exports = {
     },
     {
       field: "pubkey_validator",
+      display_name: "pubkey_validator",
       field_normalized: "pubkey_validator",
       type: "String",
       description:
@@ -148,6 +169,7 @@ module.exports = {
     },
     {
       field: "server_state",
+      display_name: "server_state",
       field_normalized: "server_state",
       type: "String",
       description:
@@ -155,6 +177,7 @@ module.exports = {
     },
     {
       field: "server_state_duration_us",
+      display_name: "server_state_duration_us",
       field_normalized: "server_state_duration_us",
       type: "Number",
       description:
@@ -162,6 +185,7 @@ module.exports = {
     },
     {
       field: "connected duration(State_accounting)",
+      display_name: "connected duration(State_accounting)",
       field_normalized: "state_accounting.connected.duration_us",
       type: "Number",
       description:
@@ -169,6 +193,7 @@ module.exports = {
     },
     {
       field: "connected transitions(State_accounting)",
+      display_name: "connected transitions(State_accounting)",
       field_normalized: "state_accounting.connected.transitions",
       type: "Number",
       description:
@@ -176,6 +201,7 @@ module.exports = {
     },
     {
       field: "disconnected duration(State_accounting)",
+      display_name: "disconnected duration(State_accounting)",
       field_normalized: "state_accounting.disconnected.duration_us",
       type: "Number",
       description:
@@ -183,6 +209,7 @@ module.exports = {
     },
     {
       field: "disconnected transitions(State_accounting)",
+      display_name: "disconnected transitions(State_accounting)",
       field_normalized: "state_accounting.disconnected.transitions",
       type: "Number",
       description:
@@ -190,6 +217,7 @@ module.exports = {
     },
     {
       field: "full duration(State_accounting)",
+      display_name: "full duration(State_accounting)",
       field_normalized: "state_accounting.full.duration_us",
       type: "Number",
       description:
@@ -197,6 +225,7 @@ module.exports = {
     },
     {
       field: "full transitions(State_accounting)",
+      display_name: "full transitions(State_accounting)",
       field_normalized: "state_accounting.full.transitions",
       type: "Number",
       description:
@@ -204,6 +233,7 @@ module.exports = {
     },
     {
       field: "syncing duration(State_accounting)",
+      display_name: "syncing duration(State_accounting)",
       field_normalized: "state_accounting.syncing.duration_us",
       type: "Number",
       description:
@@ -211,6 +241,7 @@ module.exports = {
     },
     {
       field: "syncing transitions(State_accounting)",
+      display_name: "syncing transitions(State_accounting)",
       field_normalized: "state_accounting.syncing.transitions",
       type: "Number",
       description:
@@ -218,6 +249,7 @@ module.exports = {
     },
     {
       field: "tracking duration(State_accounting)",
+      display_name: "tracking duration(State_accounting)",
       field_normalized: "state_accounting.tracking.duration_us",
       type: "Number",
       description:
@@ -225,6 +257,7 @@ module.exports = {
     },
     {
       field: "tracking transitions(State_accounting)",
+      display_name: "tracking transitions(State_accounting)",
       field_normalized: "state_accounting.tracking.transitions",
       type: "Number",
       description:
@@ -232,12 +265,14 @@ module.exports = {
     },
     {
       field: "time",
+      display_name: "time",
       field_normalized: "time",
       type: "String",
       description: "The current time in UTC, according to the server's clock",
     },
     {
       field: "uptime",
+      display_name: "uptime",
       field_normalized: "uptime",
       type: "Number",
       description:
@@ -245,12 +280,14 @@ module.exports = {
     },
     {
       field: "age(Validated_ledger)",
+      display_name: "age(Validated_ledger)",
       field_normalized: "validated_ledger.age",
       type: "Number",
       description: "The time since the ledger was closed, in seconds.",
     },
     {
       field: "base_fee_xrp(Validated_ledger)",
+      display_name: "base_fee_xrp(Validated_ledger)",
       field_normalized: "validated_ledger.base_fee_xrp",
       type: "Number",
       description:
@@ -258,12 +295,14 @@ module.exports = {
     },
     {
       field: "hash(Validated_ledger)",
+      display_name: "hash(Validated_ledger)",
       field_normalized: "validated_ledger.hash",
       type: "String",
       description: "Unique hash for the ledger, as hexadecimal.",
     },
     {
       field: "reserve_base_xrp(Validated_ledger)",
+      display_name: "reserve_base_xrp(Validated_ledger)",
       field_normalized: "validated_ledger.reserve_base_xrp",
       type: "Number",
       description:
@@ -271,6 +310,7 @@ module.exports = {
     },
     {
       field: "reserve_inc_xrp(Validated_ledger)",
+      display_name: "reserve_inc_xrp(Validated_ledger)",
       field_normalized: "validated_ledger.reserve_inc_xrp",
       type: "Number",
       description:
@@ -278,12 +318,14 @@ module.exports = {
     },
     {
       field: "seq(Validated_ledger)",
+      display_name: "seq(Validated_ledger)",
       field_normalized: "validated_ledger.seq",
       type: "Number",
       description: "The ledger index of the latest validated ledger.",
     },
     {
       field: "validation_quorum",
+      display_name: "validation_quorum",
       field_normalized: "validation_quorum",
       type: "Number",
       description:
@@ -291,6 +333,7 @@ module.exports = {
     },
     {
       field: "validator_list_expires",
+      display_name: "validator_list_expires",
       field_normalized: "validator_list_expires",
       type: "String",
       description:

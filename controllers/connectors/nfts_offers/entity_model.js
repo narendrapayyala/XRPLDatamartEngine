@@ -3,6 +3,7 @@ module.exports = {
     // account_nfts fields
     {
       field: "NFT Id",
+      display_name: "NFT Id",
       field_normalized: "nft_id",
       type: "String",
       method: "nfts_offers",
@@ -11,6 +12,7 @@ module.exports = {
     },
     {
       field: "Offer type",
+      display_name: "Offer type",
       field_normalized: "offer_type",
       type: "String",
       method: "account_nfts",
@@ -18,14 +20,16 @@ module.exports = {
     },
     {
       field: "Amount",
+      display_name: "Amount",
       field_normalized: "offers.amount",
-      type: "	String or Object",
+      type: "String or Object",
       method: "nfts_offers",
       description:
         "The amount offered to buy the NFT for, as a String representing an amount in drops of XRP, or an object representing an amount of a fungible token",
     },
     {
       field: "Currency",
+      display_name: "Currency",
       field_normalized: "offers.currency",
       type: "	String or Object",
       method: "nfts_offers",
@@ -33,6 +37,7 @@ module.exports = {
     },
     {
       field: "Issuer",
+      display_name: "Issuer",
       field_normalized: "offers.issuer",
       type: "String",
       method: "account_nfts",
@@ -40,6 +45,7 @@ module.exports = {
     },
     {
       field: "Flags",
+      display_name: "Flags",
       field_normalized: "offers.flags",
       type: "Number",
       method: "nfts_offers",
@@ -47,6 +53,7 @@ module.exports = {
     },
     {
       field: "nft_offer_index",
+      display_name: "nft_offer_index",
       field_normalized: "offers.nft_offer_index",
       type: "String",
       method: "nfts_offers",
@@ -54,6 +61,7 @@ module.exports = {
     },
     {
       field: "owner",
+      display_name: "owner",
       field_normalized: "offers.owner",
       type: "Number",
       method: "nfts_offers",
