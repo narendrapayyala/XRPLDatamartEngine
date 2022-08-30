@@ -232,7 +232,7 @@ router.post("/server-info/db/sync", async function (req, res, next) {
         a.order > b.order ? 1 : -1
       );
       template.fields.forEach((obj) => {
-        report_data[0][obj.display_name] = filterFields(
+        report_data[0][obj.field] = filterFields(
           response.result.info,
           obj.field_normalized.split(".")
         );
@@ -241,14 +241,14 @@ router.post("/server-info/db/sync", async function (req, res, next) {
         let db_obj = {};
         entity_model.forEach((obj, index) => {
           db_obj[
-            obj.display_name
+            obj.field
               .split("(")
               .join("")
               .split(")")
               .join("")
               .split(" ")
               .join("_")
-          ] = report_obj[obj.display_name] ? report_obj[obj.display_name] : "";
+          ] = report_obj[obj.field] ? report_obj[obj.field] : "";
         });
         db_data.push(db_obj);
       });
@@ -278,7 +278,7 @@ router.post("/server-info/db/sync", async function (req, res, next) {
         .split(" ")
         .join("_")} (id int NOT NULL AUTO_INCREMENT,`;
       entity_model.forEach((obj, index) => {
-        create_tbl_query += `${obj.display_name
+        create_tbl_query += `${obj.field
           .split("(")
           .join("")
           .split(")")
