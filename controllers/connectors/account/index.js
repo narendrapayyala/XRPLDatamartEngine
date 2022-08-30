@@ -224,7 +224,7 @@ router.post("/account-info/fetch", async function (req, res, next) {
       normalized_data.forEach((resObj) => {
         let row = {};
         template.fields.forEach((obj) => {
-          row[obj.field] = filterFields(resObj, [
+          row[obj.display_name] = filterFields(resObj, [
             obj.method,
             ...obj.field_normalized.split("."),
           ]);
@@ -396,8 +396,8 @@ router.post("/account-info/csv", async function (req, res, next) {
       normalized_data.forEach((resObj, index) => {
         let row = {};
         template.fields.forEach((obj) => {
-          !index && csvFields.push(obj.field);
-          row[obj.field] = filterFields(resObj, [
+          !index && csvFields.push(obj.display_name);
+          row[obj.display_name] = filterFields(resObj, [
             obj.method,
             ...obj.field_normalized.split("."),
           ]);
@@ -523,7 +523,7 @@ router.post("/account-info/db/sync", async function (req, res, next) {
       normalized_data.forEach((resObj) => {
         let row = {};
         template.fields.forEach((obj) => {
-          row[obj.field] = filterFields(resObj, [
+          row[obj.display_name] = filterFields(resObj, [
             obj.method,
             ...obj.field_normalized.split("."),
           ]);
@@ -538,14 +538,14 @@ router.post("/account-info/db/sync", async function (req, res, next) {
         let db_obj = {};
         entity_model.forEach((obj, index) => {
           db_obj[
-            obj.field
+            obj.display_name
               .split("(")
               .join("")
               .split(")")
               .join("")
               .split(" ")
               .join("_")
-          ] = report_obj[obj.field] ? report_obj[obj.field] : "";
+          ] = report_obj[obj.display_name] ? report_obj[obj.display_name] : "";
         });
         db_data.push(db_obj);
       });
@@ -571,7 +571,7 @@ router.post("/account-info/db/sync", async function (req, res, next) {
         .split(" ")
         .join("_")} (id int NOT NULL AUTO_INCREMENT,`;
       entity_model.forEach((obj, index) => {
-        create_tbl_query += `${obj.field
+        create_tbl_query += `${obj.display_name
           .split("(")
           .join("")
           .split(")")
