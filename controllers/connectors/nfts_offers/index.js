@@ -617,7 +617,8 @@ async function getNftBuyOffers(params) {
   // client.disconnect();
   // return { type: "buy_offer", response };
 
-  const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
+  // const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
+  const client = new xrpl.Client(process.env.XRPL_WS_CLIENT_ADDRESS);
   return client
     .connect()
     .then(() => {
@@ -641,7 +642,8 @@ async function getNftSellOffers(params) {
   // client.disconnect();
   // return { type: "sell_offer", response };
 
-  const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
+  // const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
+  const client = new xrpl.Client(process.env.XRPL_WS_CLIENT_ADDRESS);
   return client
     .connect()
     .then(() => {

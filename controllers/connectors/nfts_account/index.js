@@ -433,7 +433,6 @@ router.post("/nft-info/nfts", async function (req, res, next) {
             ...JSON.parse(JSON.stringify(resObj.result)),
             account_nfts: tokenObj,
           };
-          console.log(temp);
           formatted_data.push(temp);
         });
       });
@@ -458,7 +457,8 @@ router.post("/nft-info/nfts", async function (req, res, next) {
 module.exports = router;
 
 async function getNfTokens(params) {
-  const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
+  const client = new xrpl.Client(process.env.XRPL_WS_CLIENT_ADDRESS);
+  // const client = new xrpl.Client(process.env.XRPL_WS_NFT_CLIENT_ADDRESS);
   // const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233");
   await client.connect();
   const response = await client.request(params);

@@ -10,7 +10,9 @@ if (typeof module !== "undefined") var xrpl = require('xrpl')
 
 async function mintToken() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
+  
 	await client.connect()
 	console.log("Connected to Sandbox")
 
@@ -46,7 +48,8 @@ async function mintToken() {
 
 async function getTokens() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
 	const nfts = await client.request({
@@ -63,7 +66,8 @@ async function getTokens() {
 
 async function burnToken() {
   const wallet = xrpl.Wallet.fromSeed(secret.value)
-  const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  // const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
   await client.connect()
   console.log("Connected to Sandbox")
 
@@ -95,7 +99,8 @@ async function burnToken() {
 
 async function createSellOffer() {
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
 
@@ -150,7 +155,8 @@ async function createSellOffer() {
 async function createBuyOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
 
@@ -206,7 +212,8 @@ async function createBuyOffer() {
 async function cancelOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
 
@@ -263,7 +270,8 @@ async function cancelOffer() {
 async function getOffers() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
     console.log("***Sell Offers***")
@@ -298,7 +306,8 @@ async function getOffers() {
 async function acceptSellOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
 
@@ -331,7 +340,8 @@ async function acceptSellOffer() {
 async function acceptBuyOffer() {
 
 	const wallet = xrpl.Wallet.fromSeed(secret.value)
-	const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+	// const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
+  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
 	await client.connect()
 	console.log("Connected to Sandbox")
 
