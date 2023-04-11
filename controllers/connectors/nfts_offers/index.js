@@ -71,8 +71,8 @@ router.post("/nft-info/template", async function (req, res, next) {
   let body;
   try {
     body = { ...req.body, uuid: uuidv4(), created_by: req.auth_user.id };
-    await ReportTemplates.create(body);
-    return res.status(200).send({ status: true, message: "Success" });
+    let template = await ReportTemplates.create(body);
+    return res.status(200).send({ status: true, template, message: "Success" });
   } catch (err) {
     if (err.details) {
       return res
