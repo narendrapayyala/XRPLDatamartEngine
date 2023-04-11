@@ -22,6 +22,14 @@ const verifyToken = async (req, res, next) => {
       attributes: { exclude: ["token"] },
     });
     req.auth_user = user;
+    let config = await ConfigSchema.findOne({
+      where: { user_id: user.id },
+      raw: true,
+    });
+    if (config) {
+      req.server_config = config;
+      process.env.XRPL_WS_CLIENT_ADDRESS = config.url;
+    }
     if (!user) {
       res.status(401);
       throw { message: "Error! Session expired" };
