@@ -4,11 +4,13 @@ const xrpl = require("xrpl");
 const { v4: uuidv4 } = require("uuid");
 const ReportTemplates = require("../db/models").report_templates;
 const ConfigSchema = require("../db/models").configs;
+const VerifyToken = require("./middlewares").verifyToken;
+router.use(VerifyToken);
 
 router.post("/create", async function (req, res, next) {
   let body;
   try {
-    body = { ...req.body, uuid: uuidv4() };
+    body = { ...req.body, uuid: uuidv4(), user_id: req.auth_user.id };
     let response = await serverStatus(body.url, {
       id: 1,
       command: "server_state",
@@ -36,7 +38,9 @@ router.post("/create", async function (req, res, next) {
 router.get("/", async function (req, res, next) {
   let config;
   try {
-    config = await ConfigSchema.findOne();
+    config = await ConfigSchema.findOne({
+      where: { user_id: req.auth_user.id },
+    });
     return res.status(200).send({ status: true, config });
   } catch (err) {
     if (err.details) {
@@ -64,7 +68,9 @@ router.post("/update", async function (req, res, next) {
     if (!response || !response.id) {
       throw { details: [{ message: "Error! Invalid server URI." }] };
     }
-    await ConfigSchema.update(body, { where: { id: body.id } });
+    await ConfigSchema.update(body, {
+      where: { id: body.id, user_id: req.auth_user.id },
+    });
     return res.status(200).send({ status: true, message: "Success" });
   } catch (err) {
     if (err.details) {

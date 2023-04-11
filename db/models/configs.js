@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       url: {
         type: DataTypes.STRING,
       },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,
